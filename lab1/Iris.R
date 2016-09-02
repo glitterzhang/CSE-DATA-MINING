@@ -14,7 +14,6 @@ iris1=iris
 i<-1
 while(i<=4){
   iris1[,i]<-min_max(iris1[,i])
-  print(iris1[,i])
   i<-i+1
 }
 
@@ -27,7 +26,6 @@ iris2=iris
 i<-1
 while(i<=4){
   iris2[,i]<-stand(iris2[,i])
-  print(iris1[,i])
   i<-i+1
 }
 
@@ -75,7 +73,7 @@ distance_eu[,2*i+1]=top5[,i]
 }
 distance_eu<-data.frame(distance_eu)
 colnames(distance_eu)<-c("Transiation_ID","1st","1st_dist","2nd","2nd_dist","3rd","3rd_dist","4th","4th_dist","5th","5th_dist")
-
+write.csv(distance_eu,"euclideandistance.csv")
 ##Manhattan distance under min_max normalization
 dist_manh<-matrix(0,nrow=nrow(iris),ncol=nrow(iris))
 for(i in 1:nrow(iris1))
@@ -115,8 +113,9 @@ for(i in 1:5)
   distance_manh[,2*i+1]=top5[,i]
 }
 distance_manh<-data.frame(distance_manh)
-colnames(distance_manh)<-c("Transiation_ID","1st","1st_dist","2nd","2nd_dist","3rd","3rd_dist","4th","4th_dist","5th","5th_dist")
 
+colnames(distance_manh)<-c("Transiation_ID","1st","1st_dist","2nd","2nd_dist","3rd","3rd_dist","4th","4th_dist","5th","5th_dist")
+write.csv(distance_manh,"manhattandistance.csv")
 # compare two different distance histogram
 library(ggplot2)
 hist(dist_eulidean,xlab="Euclidean distance",ylab="Number of observation",main="Euclidean distance distribution")
@@ -125,13 +124,13 @@ hist(dist_manh,xlab = "Manhattan distance",ylab="number of oberseravtion",main="
 #outlier anlysis
 x<-matrix(0,nrow=147,ncol=1)
 x<-apply(dist_eulidean,1,sum)
-sort(x,decreasing = TRUE)
+sort_eu<-sort(x,decreasing = TRUE)
 hist(x,xlab = "sumdistance",ylab="Number of observations",main="Euclidean distance")
      
 
 y<-matrix(0,nrow=147,ncol=1)
 y<-apply(dist_manh,2, sum)
-sort(y,decreasing = TRUE)
+sort_man<-sort(y,decreasing = TRUE)
 hist(y,xlab = "sumdistance",ylab="Number of observations",main="Manhattan distance")
 
 #outlier analysis
