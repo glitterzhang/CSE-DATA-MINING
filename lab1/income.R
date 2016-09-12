@@ -1,4 +1,4 @@
-income<-read.csv('/Users/zhangyifei/Desktop/OSUCLASS/2015fall/datamining/dataset/income_NEW.CSV')
+income<-read.csv('./income_NEW.CSV')
 income1<-income[,-15]
 
 ##delete the object that contains missing data

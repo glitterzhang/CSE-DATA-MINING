@@ -1,4 +1,4 @@
-setwd("/Users/zhangyifei/Desktop/CSE-DATA-MINING/lab2")
+setwd("./lab2")
 income_train<-read.csv('./income_NEW.csv')
 income_test<-read.csv('./income_TEST_FINAL.csv')
 

@@ -1,5 +1,5 @@
 #set work directory
-setwd("/Users/zhangyifei/Desktop/CSE-DATA-MINING/project/project5")
+setwd("./project5")
 
 twodimeasy<- read.csv('A.easy.csv')
 twodimhard<- read.csv('A.hard.csv')
