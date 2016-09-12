@@ -5,7 +5,7 @@ Lab1: data preprocessing and calculate the manhattan Distance and Euclidean dist
 
 Lab2: KNN classification, confusion matrix, Roc curve
 
-Lab3:
+Lab3:multiple classification algorithms : 1.Decision tree 2.A rules-based classifier. 3.Naïve Bayes 4.Artificial Neural Network 5.Support vector machine 6.Ensemble learner
 
-Project:
+Project: k-mean clustering algorithm
 
