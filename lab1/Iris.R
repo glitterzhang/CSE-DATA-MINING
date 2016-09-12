@@ -1,4 +1,4 @@
-Iris<-read.csv('/Users/zhangyifei/Desktop/OSUCLASS/2015fall/datamining/dataset/Iris.csv')
+Iris<-read.csv('./Iris.csv')
 # remove the class attribute 
 iris=Iris[,-5]
 #remove duplicated rows
@@ -11,10 +11,10 @@ min_max <- function(x) {
   return ((x - min(x)) / (max(x) - min(x)))
 }
 iris1=iris
-i<-1
-while(i<=4){
+for(i in 1:4)
+{
   iris1[,i]<-min_max(iris1[,i])
-  i<-i+1
+
 }
 
 #standardization;z-score nomalization
@@ -23,10 +23,9 @@ stand<-function(x)
   return(scale(x,center=TRUE,scale=TRUE))
 }
 iris2=iris
-i<-1
-while(i<=4){
+for(i in 1:4)
+  {
   iris2[,i]<-stand(iris2[,i])
-  i<-i+1
 }
 
 ##eulidean distance under min_max normalization
@@ -35,14 +34,8 @@ for(i in 1:nrow(iris1))
 {
   for(j in 1:nrow(iris1))
   {  
-    D<-0
-    for(k in 1:ncol(iris1))
-    {
-      
-      d<-(iris1[j,k]-iris1[i,k])^2
-      D<-D+d
-    }
-    dist_eulidean[i,j]<-sqrt(D)
+    dist_eulidean[i,j]<-sqrt((iris1[i,1]-iris1[j,1])^2+(iris1[i,2]-iris1[j,2])^2+
+                               (iris1[i,3]-iris1[j,3])^2+(iris1[i,4]-iris1[j,4])^2)
   }
 }
 
@@ -50,9 +43,9 @@ for(i in 1:nrow(iris1))
 top<-matrix(0,nrow = nrow(dist_eulidean),ncol = 6)
 for(i in 1:nrow(dist_eulidean))
 {
-  top[i,]<-head(sort(dist_eulidean[,i]),6)
+  top[i,]<-head(sort(dist_eulidean[i,]),6)
 }
-top5=top[,-1]
+top5<-top[,-1]
 
 #index
 index<-matrix(0,nrow = nrow(dist_eulidean),ncol = 5)

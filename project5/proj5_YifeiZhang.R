@@ -1,5 +1,5 @@
 #set work directory
-setwd("C:/Users/ab/Desktop/project5")
+setwd("/Users/zhangyifei/Desktop/CSE-DATA-MINING/project/project5")
 
 twodimeasy<- read.csv('A.easy.csv')
 twodimhard<- read.csv('A.hard.csv')
@@ -19,7 +19,7 @@ q<-ggplot(data=twodimhard,aes(x=X.1,y=X.2,color=id))+geom_point()+ggtitle("true 
 q
 #Twodimeasy 
 #centroid for cluster1
-centroid_easy<-matrix(0,nrow = 2,ncol=3)
+centroid_easy<-matrix(0,nrow = 2,ncol=2)
 centroid_easy[1,1]<-mean(subset(twodimeasy,cluster==1)$X.1)
 centroid_easy[1,2]<-mean(subset(twodimeasy,cluster==1)$X.2)
 #centriod for cluster2

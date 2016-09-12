@@ -1,0 +1,69 @@
+---
+output: word_document
+---
+```{R}
+  wine<-read.csv("C:/Users/ab/Desktop/wine.csv")
+library(ggplot2)
+##remove ID 
+wine<-wine[,-1]
+summary(wine)
+wine_noclass<-wine[,-13]
+```
+```{r}
+#dulPLICAT DATA
+x<-which(duplicated(wine)==TRUE)
+length(x)
+
+fx<-ggplot(data=wine,aes(x=wine$class,wine$fx_acidity))+geom_boxplot()
+vo<-ggplot(data=wine,aes(x=wine$class,wine$vol_acidity))+geom_boxplot()
+ci<-ggplot(data=wine,aes(x=wine$class,wine$citric_acid))+geom_boxplot()
+re<-ggplot(data=wine,aes(x=wine$class,wine$resid_sugar))+geom_boxplot()
+ch<-ggplot(data=wine,aes(x=wine$class,wine$chlorides))+geom_boxplot()
+fr<-ggplot(data=wine,aes(x=wine$class,wine$free_sulf_d))+geom_boxplot()
+to<-ggplot(data=wine,aes(x=wine$class,wine$tot_sulf_d))+geom_boxplot()
+de<-ggplot(data=wine,aes(x=wine$class,wine$density))+geom_boxplot()
+ph<-ggplot(data=wine,aes(x=wine$class,wine$pH))+geom_boxplot()
+su<-ggplot(data=wine,aes(x=wine$class,wine$sulph))+geom_boxplot()
+al<-ggplot(data=wine,aes(x=wine$class,wine$alcohol))+geom_boxplot()
+qu<-ggplot(data=wine,aes(x=wine$class,wine$quality))+geom_boxplot()
+
+install.packages("gridExtra")
+library("gridExtra")
+install.packages("cowplot")
+library("cowplot")
+plot_grid(fx,vo,ci,re,ch,fr,to,de,ph,su,al,qu, ncol=4, nrow =3)
+
+#correlation
+correlation<-cor(wine_noclass, use="all.obs", method="pearson")
+a<-abs(cor(wine_noclass, use="all.obs", method="pearson"))
+correlation1<-format(round(correlation,3))
+library(corrplot)
+corrplot(correlation,type="upper",is.corr = FALSE, tl.col="black", tl.srt=45,main="Correlation plot")
+library(car)
+
+
+#scatterplot
+
+fx_ci<-ggplot(data=wine,aes(x=wine$fx_acidity, y=wine$citric_acid,color=wine$class))+geom_point()+ggtitle("Scatterplot1 for fixed acidity and citric acid based class ")
+fx_ci
+fx_de<-ggplot(data=wine,aes(x=wine$fx_acidity, y=wine$density,color=wine$class))+geom_point()+ggtitle("Scatterplot2 for fixed acidity and density based class ")
+fx_de
+
+fx_PH<-ggplot(data=wine,aes(x=wine$fx_acidity, y=wine$pH,color=wine$class))+geom_point()+ggtitle("Scatterplot3 for fixed acidity and pH based class ")
+fx_PH
+fr_to<-ggplot(data=wine,aes(x=wine$free_sulf_d, wine$tot_sulf_d,color=wine$class))+geom_point()+ggtitle("Scatterplot4 for total sulfur dioxide and total sulfur dioxide  based class")
+fr_to
+plot_grid(fx_ci,fx_de,fr_to,fx_PH, ncol=2, nrow =2)
+
+
+
+gg.pairs(wine[,1:12])
+
+
+
+
+
+
+
+
+```

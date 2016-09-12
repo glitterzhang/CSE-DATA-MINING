@@ -1,3 +1,5 @@
+This program implement k-means clustering algorithm on A.easy.csv ,A.hard.csv and wine.CSV dataset. k=2,3,4 .
+
 Read data:
 setwd() is to set work directory. In this program, I use ¡°C:/Users/ab/Desktop/project5¡± as working directory. All the dataset which are used in this program are saved in is file path, under the projec5 folder.
 User can change the file path to set work directory of according to requirement.

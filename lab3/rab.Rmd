@@ -1,0 +1,15 @@
+---
+output: word_document
+---
+```{R}
+  wine<-read.csv("C:/Users/ab/Desktop/wine.csv")
+library(ggplot2)
+##remove ID 
+wine<-wine[,-1]
+summary(wine)
+wine_noclass<-wine[,-13]
+```
+```{r}
+x<-which(duplicated(wine)==TRUE)
+length(x)
+```

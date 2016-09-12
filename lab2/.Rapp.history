@@ -1,0 +1,3 @@
+source('~/Desktop/CSE-DATA-MINING/lab2/Iris.R', chdir = TRUE)
+getwd()
+source('~/Desktop/CSE-DATA-MINING/lab2/Iris.R', chdir = TRUE)
